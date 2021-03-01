@@ -1,12 +1,11 @@
 import os
-from time import time
-
 from django.conf import settings
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views.generic import TemplateView
+from time import time
 
 from .forms import DNAOverviewForm
 
@@ -34,4 +33,5 @@ class DNAView(TemplateView):
                 os.path.join(settings.MEDIA_ROOT, relative_path_filename),
                 ContentFile(image.read()),
             )
+            print("success")
         return HttpResponseRedirect("/uploads")
